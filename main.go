@@ -43,7 +43,7 @@ func deleteBookmark(bookmarks map[string]string) {
 	}
 	_, ok := bookmarks[name]
 	if !ok {
-		fmt.Printf("Закладка с именем %s не существует", name)
+		fmt.Printf("Закладка с именем %s не существует \n", name)
 	} else {
 		delete(bookmarks, name)
 	}
@@ -70,7 +70,7 @@ func main() {
 			deleteBookmark(bookmarks)
 		case 4:
 			fmt.Println("Выход")
-			break
+			return
 		default:
 			fmt.Printf("Значение %d не поддерживается\n", choiceNum)
 		}
