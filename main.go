@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	urlMap := map[string]string{
-		"PurpleSchool": "https://puprleschool.ru",
+		"PurpleSchool": "https://purpleschool.ru",
 		"Yandex":       "https://yandex.ru",
 		"Google":       "https://www.google.com",
 	}
@@ -16,8 +16,8 @@ func main() {
 
 	_, ok = urlMap["NotExist"]
 
-	if ok == false {
-		fmt.Println("Kye 'NotExist' doesnt exist")
+	if !ok {
+		fmt.Println("Key 'NotExist' doesnt exist")
 	}
 
 	fmt.Printf("Url map len is %d\n", len(urlMap))
