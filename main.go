@@ -3,15 +3,16 @@ package main
 import "fmt"
 
 func printMenu() {
-	fmt.Println(`Сервис работы с заявками:
+	fmt.Println(`Сервис работы с закладками:
 	1. Показать закладку
 	2. Добавить закладку
 	3. Удалить закладку
+	4. Выход
 	`)
 }
 func showBookmarks(bookmarks map[string]string) {
 	if len(bookmarks) == 0 {
-		fmt.Println("Список заявок пуст")
+		fmt.Println("Список закладок пуст")
 	} else {
 		for key, value := range bookmarks {
 			fmt.Println(key, value)
@@ -40,8 +41,12 @@ func deleteBookmark(bookmarks map[string]string) {
 		fmt.Println(err)
 		return
 	}
-
-	delete(bookmarks, name)
+	_, ok := bookmarks[name]
+	if !ok {
+		fmt.Printf("Закладка с именем %s не существует", name)
+	} else {
+		delete(bookmarks, name)
+	}
 }
 
 func main() {
@@ -63,6 +68,9 @@ func main() {
 			addBookmark(bookmarks)
 		case 3:
 			deleteBookmark(bookmarks)
+		case 4:
+			fmt.Println("Выход")
+			break
 		default:
 			fmt.Printf("Значение %d не поддерживается\n", choiceNum)
 		}
